@@ -5,8 +5,6 @@ on: [push]
 jobs:
   Despliegue:
 
-    runs-on: ubuntu-latest
-
     - uses: actions/checkout@v4    
     - name: Despliegue al servidor AWS
       uses: easingthemes/ssh-deploy@main
