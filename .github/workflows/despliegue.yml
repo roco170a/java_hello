@@ -1,26 +1,33 @@
-name: Java Gradle
+name: Push-to-EC2
 
+# Trigger deployment only on push to main branch
 on: [push]
 
 jobs:
-  Despliegue:
+  deploy:
+    name: Deploy to Java Source on master branch push
+    runs-on: ubuntu-latest
 
-    - uses: actions/checkout@v4    
-    - name: Despliegue al servidor AWS
-      uses: easingthemes/ssh-deploy@main
-      env:
-        SSH_PRIVATE_KEY: ${{ secrets.VM_SSH_KEY }}
-        REMOTE_HOST: ${{ secrets.HOST_DNS }}
-        REMOTE_USER: ${{ secrets.USERNAME }}
-        TARGET: ${{ secrets.TARGET_DIR }}
+    steps:
+      - name: Checkout the files
+        uses: actions/checkout@v2
 
-    - name: Ejecución cmd en AWS
-      uses: appleboy/ssh-action@master
-      with:
-        host: ${{ secrets.HOST_DNS }}
-        username: ${{ secrets.USERNAME }}
-        key: ${{ secrets.VM_SSH_KEY }}
-        script: |
-          cd /home/ubuntu/java_hello
-          gradle bootJar
-          sudo systemctl restart api.service
+      - name: Deploy to Server AWS
+        uses: easingthemes/ssh-deploy@main
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.VM_SSH_KEY }}
+          REMOTE_HOST: ${{ secrets.HOST_DNS }}
+          REMOTE_USER: ${{ secrets.USERNAME }}
+          TARGET: ${{ secrets.TARGET_DIR }}
+
+      - name: Se ejecuta la compilación y publicación
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST_DNS }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.VM_SSH_KEY }}
+          script: |
+            cd /home/ubuntu/java_hello
+            gradle bootJar
+            sudo systemctl restart api.service
+
