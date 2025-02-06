@@ -15,6 +15,6 @@ public class HealthController {
 
 	@GetMapping("/health")
 	public String greeting(@RequestParam(value = "name", defaultValue = "Mundo") String name) {
-		return "Holis " + name;
+		return "Holis " + name + " - Test case 1";
 	}
 }
