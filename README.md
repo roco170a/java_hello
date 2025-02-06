@@ -40,7 +40,7 @@ Este proyecto está licenciado bajo la licencia Apache 2.0. Consulta el archivo 
 
 - **Roberto Corona** - Desarrollador principal.
 
-## Contacto
+## Contacto -edited
 
 Si tienes alguna pregunta o necesitas ayuda, no dudes en contactarme:
 
