@@ -28,6 +28,6 @@ jobs:
           key: ${{ secrets.VM_SSH_KEY }}
           script: |
             cd /home/ubuntu
-            /opt/gradle/gradle-8.12.1/bin/gradle bootJar
+            sudo /opt/gradle/gradle-8.12.1/bin/gradle bootJar
             sudo systemctl restart api.service
 
