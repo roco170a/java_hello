@@ -27,7 +27,7 @@ jobs:
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.VM_SSH_KEY }}
           script: |
-            cd /home/ubuntu/java_hello
+            cd /home/ubuntu
             gradle bootJar
             sudo systemctl restart api.service
 
