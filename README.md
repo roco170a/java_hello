@@ -1,6 +1,6 @@
 # CI/CD con AWS
 
-Este proyecto es un microservicio desarrollado en Java Spring Boot que demuestra el uso de workflows, CI/CD (Integración Continua/Despliegue Continuo) y despliegue automático en AWS.
+Este proyecto es un microservicio en Java Spring Boot que demuestra el uso de Terraform, Workflows, CI/CD (Integración Continua/Despliegue Continuo) y despliegue automático en AWS.
 
 ## Descripción
 
